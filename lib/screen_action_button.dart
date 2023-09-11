@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'search_bloc.dart';
 
 class ScreenActionButton extends StatefulWidget {
@@ -9,6 +10,8 @@ class ScreenActionButton extends StatefulWidget {
 }
 
 class _ScreenActionButtonState extends State<ScreenActionButton> {
+  final TextEditingController _textController = TextEditingController();
+
   final _likeBloc = LikeBloc();
   int likeCount = 0;
 
@@ -41,27 +44,33 @@ class _ScreenActionButtonState extends State<ScreenActionButton> {
           builder: (context, snapshot) {
             final isLikedFromStream = (snapshot.data ?? 0) == 1;
             return Container(
-              margin: const EdgeInsets.only(top: 400, right: 100),
-              child: Row(
+              // height: 180,
+              // width: 380,
+              // color: Colors.grey,
+              margin: const EdgeInsets.only(top: 200, left: 10, right: 10),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Column(
+                  Row(
                     children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            '${_likeBloc.likeCount}k',
-                          ),
-                        ],
+                      Expanded(
+                        child: Text('${_likeBloc.likeCount}k'),
                       ),
-                      const Divider(
-                        color: Colors.blue,
-                      ),
-                      Stack(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(right: 10, left: 25),
-                            child: TextButton(
+                      const Text('200 comments'),
+                      const Padding(padding: EdgeInsets.only(right: 10)),
+                      const Text('129 shares'),
+                      const Padding(padding: EdgeInsets.only(right: 10)),
+                      const Text('980 views'),
+                    ],
+                  ),
+                  const Divider(),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        child: Stack(
+                          children: [
+                            TextButton(
                               onPressed: () {
                                 _likeBloc.toggleLike();
                               },
@@ -85,52 +94,76 @@ class _ScreenActionButtonState extends State<ScreenActionButton> {
                                 ],
                               ),
                             ),
+                          ],
+                        ),
+                      ),
+                      Stack(
+                        children: [
+                          TextButton(
+                            onPressed: () {},
+                            child: const Row(
+                              children: [
+                                Icon(
+                                  Icons.message_outlined,
+                                ),
+                                Text(
+                                  'Comments',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                      Stack(
+                        children: [
+                          TextButton(
+                            onPressed: () {},
+                            child: const Row(
+                              children: [
+                                Icon(
+                                  Icons.share_outlined,
+                                ),
+                                Text(
+                                  'Shares',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                      Stack(
+                        children: [
+                          TextButton(
+                            onPressed: () {},
+                            child: const Row(
+                              children: [
+                                Text(
+                                  'Views',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ],
                       ),
                     ],
                   ),
-                  Column(
-                    children: [
-                      const Text(
-                        'k',
-                      ),
-                      const Divider(
-                        color: Colors.blue,
-                      ),
-                      Container(
-                        clipBehavior: Clip.hardEdge,
-                        decoration: const BoxDecoration(
-                          shape: BoxShape.rectangle,
-                          color: Colors.transparent,
-                        ),
-                        child: Stack(
-                          children: [
-                            Padding(
-                              padding:
-                                  const EdgeInsets.only(right: 10, left: 25),
-                              child: TextButton(
-                                onPressed: () {},
-                                child: const Row(
-                                  children: [
-                                    Icon(
-                                      Icons.message_outlined,
-                                    ),
-                                    Text(
-                                      'Comments',
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
+                  TextField(
+                    controller: _textController,
+                    decoration: const InputDecoration(
+                      labelText: 'Enter text',
+                      hintText: 'Enter text',
+                      border: OutlineInputBorder(),
+                    ),
+                  )
                 ],
               ),
             );
