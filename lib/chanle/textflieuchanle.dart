@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:luyencode/checkumber.dart';
+import 'package:luyencode/chanle/checkumber.dart';
 
 
 
@@ -20,8 +20,9 @@ class _MyTextState extends State<MyText> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        margin: const EdgeInsets.only(top: 200),
+        margin: const EdgeInsets.only(top: 0),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
              TextField(
               onChanged: (text) {
