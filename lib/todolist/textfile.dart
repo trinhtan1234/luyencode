@@ -12,12 +12,18 @@ class AppTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var outlineInputBorder = OutlineInputBorder(
+        borderSide: const BorderSide(width: 0.5, color: Colors.grey),
+        borderRadius: BorderRadius.circular(30));
+
     return TextField(
       decoration: InputDecoration(
-        contentPadding: const EdgeInsets.symmetric(),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(20),
-        ),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 16),
+        constraints: const BoxConstraints(maxHeight: 44),
+        border: outlineInputBorder,
+        enabledBorder: outlineInputBorder,
+        disabledBorder: outlineInputBorder,
+        focusedBorder: outlineInputBorder,
         labelText: texthint,
         hintText: texthint,
       ),

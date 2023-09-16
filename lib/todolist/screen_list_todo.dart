@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:luyencode/todolist/text.dart';
 import 'package:luyencode/todolist/textfile.dart';
 
 class ScreenTodo extends StatelessWidget {
@@ -8,11 +9,22 @@ class ScreenTodo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: Center(
-        child: AppTextField(
-          texthint: 'Xin chao',
-          labelText: 'Xin chao',
-        ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Center(
+            child: AppTextField(
+              texthint: 'Xin chao',
+              labelText: 'Xin chao',
+            ),
+          ),
+          SizedBox(height: 20),
+          Center(
+            child: TextCumstom(
+              text: 'toi la ai',
+            ),
+          )
+        ],
       ),
     );
   }
